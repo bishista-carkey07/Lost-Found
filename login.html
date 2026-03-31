@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="login.css">
-    <!-- Google Identity Services -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
 </head>
 <body>
 
@@ -20,31 +19,13 @@
 
     <button onclick="login()">Login</button>
 
-    <!-- Divider -->
-    <div class="divider"><span>or</span></div>
 
-    <!-- Google Sign-In Button -->
-    <div id="g_id_onload"
-         data-client_id="YOUR_GOOGLE_CLIENT_ID"
-         data-callback="handleGoogleAuth"
-         data-auto_prompt="false">
-    </div>
-    <div class="g_id_signin google-btn-wrapper"
-         data-type="standard"
-         data-shape="rectangular"
-         data-theme="outline"
-         data-text="signin_with"
-         data-size="large"
-         data-logo_alignment="left"
-         data-width="270">
-    </div>
 
     <p class="signup-text">
         Don't have an account? <a href="signup.html">Sign up</a>
     </p>
 </div>
 
-<script src="login.js"></script>
 <script src="signup.js"></script>
 </body>
 </html>

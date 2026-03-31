@@ -70,39 +70,3 @@ function login() {
     errorBox.innerText   = "Login successful!";
     setTimeout(() => { window.location.href = "main.html"; }, 1000);
 }
-
-// ── GOOGLE SIGN-IN ────────────────────────────────────────────────────────
-function decodeJWT(token) {
-    const base64Url = token.split('.')[1];
-    const base64    = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const json      = decodeURIComponent(
-        atob(base64)
-            .split('')
-            .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-            .join('')
-    );
-    return JSON.parse(json);
-}
-
-function handleGoogleAuth(response) {
-    const payload  = decodeJWT(response.credential);
-    const email    = payload.email;
-    const username = email.split('@')[0];
-    const googleId = payload.sub;
-
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-
-    let user = users.find(u => u.googleId === googleId);
-    if (!user) {
-        user = { username, phone: "", contact_info: email, password: "", googleId };
-        users.push(user);
-        localStorage.setItem("users", JSON.stringify(users));
-    }
-
-    localStorage.setItem("user", JSON.stringify({
-        username:     user.username,
-        phone:        user.phone || "",
-        contact_info: user.contact_info || email
-    }));
-    window.location.href = "main.html";
-}
