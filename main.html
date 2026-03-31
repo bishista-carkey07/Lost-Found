@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lost &amp; Found System</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<header>Lost &amp; Found System</header>
+
+<div class="top-bar">
+  <input type="text" id="search" placeholder="Search Item">
+  <button id="addBtn">Add Item</button>
+</div>
+
+<div class="container">
+
+  <div class="form-box" id="formBox">
+    <h3>Add Found Item</h3>
+    <div class="error" id="error"></div>
+
+    <input type="text" id="title" placeholder="Item name (required if no image)">
+
+    <div class="radio-row">
+      <label><input type="radio" name="status" value="found" checked> I Found This</label>
+      <label><input type="radio" name="status" value="lost"> I Lost This</label>
+    </div>
+    <br>
+
+    <div class="file-upload-box">
+      <label for="image"><b>Upload Image: </b></label>
+      <input type="file" id="image" accept="image/*" onchange="previewImage(this)">
+      <div id="imagePreview" class="image-preview"></div>
+    </div>
+
+    <input type="text" id="location" placeholder="Location (optional)">
+    <textarea id="description" placeholder="Description (optional)"></textarea>
+
+    <button id="submitBtn">Submit</button>
+  </div>
+
+  <div id="items" class="items"></div>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
